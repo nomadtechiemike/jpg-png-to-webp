@@ -16,12 +16,15 @@ echo '
 # convert jpegs
 echo 'Renaming files to match mask..'
 sleep 3
+# replace with JPG or JP*G
 find . -name "*.PNG"  -exec sh -c 'mv "$1" "${1%.PNG}.png"' _ {} \;
 echo 'Encoding files...'
 sleep 3
+# replace with jog
 find . -name "*.png" | parallel --bar --eta cwebp -q 90 -m 6 -segments 4 -sharp_yuv -v -metadata all {} -o {.}.webp
 echo 'Removing source files in 30 seconds, be carefull..'
 sleep 30
+# replace with jpg
 find . -name "*.png" | parallel --bar --eta rm {} \;
 
 
